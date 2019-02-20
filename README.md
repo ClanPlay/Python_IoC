@@ -202,6 +202,9 @@ def test_class_per_thread():
     assert ioc.singleton2 != thread_storage['singleton2']
 ```
 ## @NotInject decorator
+In the following example, the @NotInject decorator prevents the IoC manager from adding arg1 to the kwargs argument when it initializes the ExampleClass, arg1 argument is needed by the parent class.
+Removing the @NotInject decorator in this example will result in an exception.
+The @NonInject decorator takes a list of argument names to skip in the initializing process.
 ``` {.sourceCode .python}
 class ClassA:
     pass
@@ -231,8 +234,6 @@ def test_not_inject():
 
     assert ioc.ExampleClass.__class__ == ExampleClass
 ```
-If there is no @NotInject, IoC manager will add arg1 to kwargs when it initializes ExampleClass and there will be an exception.
-To avoid this issue you can use @NotInject decorator and pass a list of argument names to it, to skip initialization of the arguments.
 ## Exceptions
 ``` {.sourceCode .python}
 class ClassA:
