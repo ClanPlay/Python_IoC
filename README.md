@@ -237,13 +237,14 @@ def test_not_inject():
     assert ioc.ExampleClass.__class__ == ExampleClass
 ```
 ## Exceptions
-Exceptions are raised in four cases:
-* if you ask for an undefined container, AttributeError is raised
-* if you put an argument for a parent constructor and also the IoC manager puts it, 
-TypeError is raised, because the constructor of the parent class got multiple values 
-for an argument. You can prevent IoC from passing this argument by @NotInject decorator
-* if you don't define a container but a constructor of a class or of a parent class 
-needs it, TypeError is raised. You need to define the container
+IoC Manager raises two types of exceptions:
+* AttributeError - when trying to get an undefined attribute from the IoC Manager
+* TypeError - in the following cases:
+  * IoC Manager is missing a container definition needed by the initialization of a
+   class or it parent class 
+  * while initializing a class, multiple instances of the same argument are provided 
+  to it's parent class - by the user and also injected by IoC Manager. This issue 
+  can be resolve using the @NotInject decorator 
 
 ``` {.sourceCode .python}
 class ClassA:
