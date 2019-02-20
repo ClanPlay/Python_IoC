@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="flying_ioc",
-    version="1.0.2",
+    version="1.0.3",
     author="Asaf Semo, Dmitry Voronenkov",
     author_email="asafsemo@gmail.com",
     description="IoC for Humans",

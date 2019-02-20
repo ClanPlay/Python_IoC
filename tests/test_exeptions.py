@@ -63,7 +63,7 @@ def test_exception_missing_not_inject():
 
 # noinspection PyStatementEffect
 def test_exception_arg_is_not_defined():
-    with pytest.raises(RuntimeError) as e:
+    with pytest.raises(TypeError) as e:
         ioc.set_class(cls=ExampleClass2)
         ioc.ExampleClass2
     assert e.value.args[0].args[0] == "Can't get a container neither by class name ClassC, neither by arg name arg1"

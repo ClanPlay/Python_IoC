@@ -203,7 +203,9 @@ def test_class_per_thread():
 ```
 ## @NotInject decorator
 In the following example, the @NotInject decorator prevents the IoC manager from adding arg1 to the kwargs argument when it initializes the ExampleClass, arg1 argument is needed by the parent class.
+
 Removing the @NotInject decorator in this example will result in an exception.
+
 The @NonInject decorator takes a list of argument names to skip in the initializing process.
 ``` {.sourceCode .python}
 class ClassA:
@@ -235,6 +237,14 @@ def test_not_inject():
     assert ioc.ExampleClass.__class__ == ExampleClass
 ```
 ## Exceptions
+Exceptions are raised in four cases:
+* if you ask for an undefined container, AttributeError is raised
+* if you put an argument for a parent constructor and also the IoC manager puts it, 
+TypeError is raised, because the constructor of the parent class got multiple values 
+for an argument. You can prevent IoC from passing this argument by @NotInject decorator
+* if you don't define a container but a constructor of a class or of a parent class 
+needs it, TypeError is raised. You need to define the container
+
 ``` {.sourceCode .python}
 class ClassA:
     pass
@@ -281,7 +291,7 @@ def test_exception_missing_not_inject():
     assert e.value.args[0] == "__init__() got multiple values for argument 'arg1'"
 
 def test_exception_arg_is_not_defined():
-    with pytest.raises(RuntimeError) as e:
+    with pytest.raises(TypeError) as e:
         ioc.set_class(cls=ExampleClass2)
         ioc.ExampleClass2
     assert e.value.args[0].args[0] == "Can't get a container neither by class name ClassC, neither by arg name arg1"
