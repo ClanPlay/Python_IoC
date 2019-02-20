@@ -16,7 +16,7 @@ def _set_vars(ioc: IocManager, storage: dict):
     return wrapped
 
 
-def test_singleton_container():
+def test_multithread():
     ioc = IocManager(stats=True)
 
     ioc.set_class(name='singleton1', cls=TSingleton1, singleton=True)
