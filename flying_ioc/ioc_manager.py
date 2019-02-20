@@ -1,17 +1,10 @@
 import traceback
 
-from ioc_containers.class_container import ClassContainer
-from ioc_containers.factory_container import FactoryContainer
-from ioc_containers.singleton_container import SingletonContainer
-from ioc_containers.value_container import ValueContainer
+from flying_ioc.class_container import ClassContainer
+from flying_ioc.factory_container import FactoryContainer
+from flying_ioc.singleton_container import SingletonContainer
+from flying_ioc.value_container import ValueContainer
 
-
-# phases:
-# 1. only get by name, values, not creating classes
-# 2. creating class, only singleton, no base classes
-# 2a. singleton with args
-# 3. only singleton, base class same or less arguments
-# 4. only singleton, base class other arguments
 
 class IocManager:
     def __init__(self, stats=False):

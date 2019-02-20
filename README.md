@@ -1,15 +1,19 @@
 # Inversion of control (IoC) for Humans - written in Python
-IoC for Humans - written in Python
+[Inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control)
+
 ## How to use it
+pip install flying-ioc
 
 ``` {.sourceCode .python}
-self._ioc: IocManager = IocManager()
+import flying_ioc
 
-self._ioc.set_class(cls=HelperWrapper, singleton=True)
-self._ioc.set_class(cls=GRHelperService, singleton=True)
-self._ioc.set_class(name='api', cls=GRApiClient, singleton=True, thread_local=True)
+ioc = flying_ioc.IocManager()
 
-gr_service: GRHelperService = self._ioc.GRHelperService
+ioc.set_class(cls=HelperWrapper, singleton=True)
+ioc.set_class(cls=GRHelperService, singleton=True)
+ioc.set_class(name='api', cls=GRApiClient, singleton=True, thread_local=True)
+
+gr_service: GRHelperService = ioc.GRHelperService
 gr_service.start()
 ```
 
@@ -23,7 +27,7 @@ gr_service.start()
 
 ## Attribute
 ``` {.sourceCode .python}
-gr_service: GRHelperService = self._ioc.GRHelperService
+gr_service: GRHelperService = ioc.GRHelperService
 gr_service.start()
 ```
 ### Initializing a class

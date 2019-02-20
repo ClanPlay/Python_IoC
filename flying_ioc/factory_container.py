@@ -1,7 +1,7 @@
 import inspect
 from abc import ABC, abstractmethod
 
-from ioc_containers.base_container import BaseContainer
+from flying_ioc.base_container import BaseContainer
 
 
 class IocFactory(ABC):

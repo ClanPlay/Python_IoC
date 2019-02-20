@@ -1,6 +1,6 @@
 import threading
 
-from ioc_manager import IocManager
+from flying_ioc import IocManager
 
 
 class ClassA:

@@ -1,8 +1,8 @@
 import inspect
 import threading
 
-from ioc_containers.base_container import BaseContainer
-from ioc_decorator import NotInject
+from flying_ioc.base_container import BaseContainer
+from flying_ioc import NotInject
 
 
 class ClassContainer(BaseContainer):

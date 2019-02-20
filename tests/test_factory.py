@@ -1,7 +1,6 @@
 import inspect
 
-from ioc_containers.factory_container import IocFactory
-from ioc_manager import IocManager
+from flying_ioc import IocManager, IocFactory
 
 
 class ClassA:
