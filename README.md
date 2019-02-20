@@ -242,7 +242,7 @@ IoC Manager raises two types of exceptions:
 * TypeError - in the following cases:
   * IoC Manager is missing a container definition needed by the initialization of a
    class or it parent class 
-  * while initializing a class, multiple instances of the same argument are provided 
+  * While initializing a class, multiple instances of the same argument are provided 
   to it's parent class - by the user and also injected by IoC Manager. This issue 
   can be resolve using the @NotInject decorator 
 
