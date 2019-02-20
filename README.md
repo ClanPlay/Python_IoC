@@ -5,9 +5,9 @@
 pip install flying-ioc
 
 ``` {.sourceCode .python}
-import flying_ioc
+from flying_ioc import *
 
-ioc = flying_ioc.IocManager()
+ioc = IocManager()
 
 ioc.set_class(cls=HelperWrapper, singleton=True)
 ioc.set_class(cls=GRHelperService, singleton=True)
